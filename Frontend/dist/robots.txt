@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: /customer/login
+Allow: /customer/register
+Allow: /store-owner/login
+Allow: /admin/login
+Allow: /pos/login
+
+Disallow: /customer/dashboard
+Disallow: /customer/products
+Disallow: /customer/cart
+Disallow: /customer/orders
+Disallow: /customer/settings
+Disallow: /store-owner/dashboard
+Disallow: /admin/dashboard
+Disallow: /pos/dashboard
+Disallow: /api/
+
+Sitemap: https://kadiwamart.com/sitemap.xml

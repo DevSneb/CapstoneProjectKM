@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "trained_at": "2026-11-25T14:16:36.799297+00:00",
+  "live_csv": "dataset\\Train\\kadiwa_sample_sales.csv",
+  "seed_csv": "C:\\Users\\Admin\\Documents\\CapstoneProject\\kadiwa\\ml\\dataset\\Train\\kadiwa_sample_sales.csv",
+  "results": [
+    {
+      "store_id": "CALSEDECO",
+      "ok": true,
+      "source": "live",
+      "rows": 180,
+      "r2": 0.4434722038690161,
+      "accuracy_pct": 44.34722038690161,
+      "ml_weight": 0.8,
+      "n_estimators": 300,
+      "model_path": "C:\\Users\\Admin\\Documents\\CapstoneProject\\kadiwa\\ml\\models\\sales_forecaster_store_CALSEDECO.joblib"
+    },
+    {
+      "store_id": "PAPANDUNGIN",
+      "ok": true,
+      "source": "live",
+      "rows": 180,
+      "r2": 0.3620993452675181,
+      "accuracy_pct": 36.20993452675181,
+      "ml_weight": 0.8,
+      "n_estimators": 600,
+      "model_path": "C:\\Users\\Admin\\Documents\\CapstoneProject\\kadiwa\\ml\\models\\sales_forecaster_store_PAPANDUNGIN.joblib"
+    },
+    {
+      "store_id": "JUBILEE",
+      "ok": true,
+      "source": "live",
+      "rows": 180,
+      "r2": 0.5989992389046667,
+      "accuracy_pct": 59.89992389046667,
+      "ml_weight": 1.0,
+      "n_estimators": 600,
+      "model_path": "C:\\Users\\Admin\\Documents\\CapstoneProject\\kadiwa\\ml\\models\\sales_forecaster_store_JUBILEE.joblib"
+    }
+  ]
+}

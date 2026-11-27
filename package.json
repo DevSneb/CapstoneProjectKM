@@ -1,0 +1,24 @@
+{
+  "name": "kadiwa-ecommerce",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run serve --prefix frontend",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"green,blue\" \"npm run backend\" \"npm run frontend\"",
+    "build": "npm --prefix Frontend run build",
+    "vercel-build": "npm run build",
+    "postinstall": "npm --prefix Backend install && npm --prefix Frontend install --include=dev && npm --prefix Frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  },
+  "dependencies": {
+    "serverless-http": "^3.2.0"
+  }
+}

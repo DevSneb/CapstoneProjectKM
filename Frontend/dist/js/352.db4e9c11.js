@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkkadiwa_ecommerce_frontend"]=self["webpackChunkkadiwa_ecommerce_frontend"]||[]).push([[352],{8827:function(n,e,t){t.r(e),t.d(e,{default:function(){return f}});var o=t(641);function r(n,e,t,r,u,c){const a=(0,o.g2)("inventory-table");return(0,o.uX)(),(0,o.CE)("div",null,[e[0]||(e[0]=(0,o.Lk)("h2",null,"Inventory • Out of Stock",-1)),(0,o.bF)(a,{mode:"out"})])}var u=t(4628),c={components:{InventoryTable:u.A}},a=t(6262);const d=(0,a.A)(c,[["render",r]]);var f=d}}]);
+//# sourceMappingURL=352.db4e9c11.js.map
