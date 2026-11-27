@@ -42,7 +42,8 @@ const FINALIZED_ORDER_STATUSES_SQL = `status IN ('delivered', 'completed', 'paid
 
 async function getRecentDailySales(storeOwnerId, daysBack = 30) {
   const [rows] = await db.query(
-    `SELECT DATE(created_at) AS day, COALESCE(SUM(total_amount), 0) AS total
+    `SELECT DATE_FORMAT(DATE(created_at), '%Y-%m-%d') AS day,
+            COALESCE(SUM(total_amount), 0) AS total
      FROM orders
      WHERE store_owner_id = ?
        AND ${FINALIZED_ORDER_STATUSES_SQL}
@@ -263,7 +264,12 @@ async function getStoreForecast(storeOwnerId, horizon = 7) {
       : secondAverage < firstAverage * 0.95 ? 'down' : 'stable'
   };
 
-  const modelPath = path.resolve(__dirname, '..', '..', 'ml', 'models', `sales_forecaster_store_${modelKey}.joblib`);
+  // The evaluated model directory is independent of the scheduled retrainer's output.
+  const evaluatedModelsDir = String(process.env.ML_EVALUATED_MODELS_DIR || '').trim();
+  const modelPath = path.resolve(
+    __dirname, '..', '..', evaluatedModelsDir || 'ml/models',
+    `sales_forecaster_store_${modelKey}.joblib`
+  );
   const safeHorizon = Math.max(1, Math.min(30, Number(horizon) || 7));
 
   if (!fs.existsSync(modelPath)) {
@@ -311,6 +317,7 @@ async function getStoreForecast(storeOwnerId, horizon = 7) {
     recent_sales: mlResult.recent_sales,
     forecast: mlResult.forecast,
     engine,
+    ...(engine === 'python' && evaluatedModelsDir ? { model_source: 'evaluated_export' } : {}),
     analytics,
     warning: mlResult.warning || (engine === 'fallback'
       ? 'Python model unavailable; showing fallback estimate.'
